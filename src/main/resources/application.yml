@@ -1,0 +1,29 @@
+spring:
+  main:
+    allow-circular-references: true
+    allow-bean-definition-overriding: true
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  datasource:
+    url: jdbc:mysql://${MYSQL_HOST:localhost:3306/las_vegas?createDatabaseIfNotExist=true&useSSL=false&useTimezone=true&serverTimezone=UTC}
+    username: ${MYSQL_USER:root}
+    password: ${MYSQL_PASSWORD:root}
+  jpa:
+    database: mysql
+    hibernate:
+      ddl-auto: update
+    generate-ddl: true
+    open-in-view: true
+
+application:
+  title: '@project.artifactId@'
+  version: '@project.version@'
+  description: '@project.description@'
+
+
+logging:
+  level:
+    root: INFO
+server:
+  port: 8081
