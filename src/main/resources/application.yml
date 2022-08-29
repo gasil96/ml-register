@@ -15,12 +15,19 @@ spring:
       ddl-auto: update
     generate-ddl: true
     open-in-view: true
+  rabbitmq:
+    host: localhost
+    password: guest
+    port: 15672
+    username: guest
+    exchange: register.exchange
+    queue: register.queue
+    routingkey: register.routingkey
 
 application:
   title: '@project.artifactId@'
   version: '@project.version@'
   description: '@project.description@'
-
 
 logging:
   level:
