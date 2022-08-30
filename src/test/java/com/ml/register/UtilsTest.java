@@ -2,6 +2,7 @@ package com.ml.register;
 
 import com.ml.register.dtos.OrderDTO;
 import com.ml.register.dtos.OrderRegisterDTO;
+import com.ml.register.entities.OrderRegister;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.junit.MockitoJUnitRunner;
@@ -21,9 +22,9 @@ public class UtilsTest {
 
 	@Test
 	public void mapEntityPageIntoDtoPageWithSuccess() {
-		Page<OrderDTO> orderDTOS = Utils.mapEntityPageIntoDtoPage(LIST_ORDERS_REGISTER, OrderDTO.class);
+		Page<OrderRegister> orders = Utils.mapEntityPageIntoDtoPage(LIST_ORDERS_REGISTER, OrderRegister.class);
 
-		assertEquals(1, orderDTOS.getSize());
+		assertEquals(1, orders.getSize());
 	}
 
 	private Page<OrderRegisterDTO> builderOrderRegisterList() {
