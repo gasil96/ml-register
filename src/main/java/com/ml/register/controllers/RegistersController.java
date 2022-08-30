@@ -23,7 +23,7 @@ public class RegistersController {
 	private OrderRegisterService orderRegisterService;
 
 	@Operation(summary = "list events by status")
-	@GetMapping("/orders/list")
+	@GetMapping("/v1/orders/list")
 	public ResponseEntity<Page<OrderRegisterDTO>> listAll(Pageable pageable) {
 		log.info("RegistersController.listAll - Start ");
 
