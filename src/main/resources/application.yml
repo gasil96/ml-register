@@ -6,9 +6,9 @@ spring:
     pathmatch:
       matching-strategy: ant_path_matcher
   datasource:
-    url: jdbc:mysql://${MYSQL_HOST:localhost:3306/las_vegas?createDatabaseIfNotExist=true&useSSL=false&useTimezone=true&serverTimezone=UTC}
-    username: ${MYSQL_USER:root}
-    password: ${MYSQL_PASSWORD:root}
+    url: ${DATASOURCE_URL:jdbc:mysql://localhost:3306/las_vegas?createDatabaseIfNotExist=true&useSSL=false&useTimezone=true&serverTimezone=UTC}
+    username: ${DATASOURCE_USERNAME:root}
+    password: ${DATASOURCE_PASSWORD:root}
   jpa:
     database: mysql
     hibernate:
@@ -16,10 +16,10 @@ spring:
     generate-ddl: true
     open-in-view: true
   rabbitmq:
-    host: localhost
-    password: guest
+    host: ${RABBIT_HOST:localhost}
+    username: ${RABBIT_USERNAME:guest}
+    password: ${RABBIT_PASSWORD:guest}
     port: 15672
-    username: guest
     exchange: register.exchange
     queue: register.queue
     routingkey: register.routingkey
