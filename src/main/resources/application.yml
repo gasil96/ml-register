@@ -34,3 +34,7 @@ logging:
     root: INFO
 server:
   port: 8081
+management:
+  endpoint:
+    health:
+      show-details: always
