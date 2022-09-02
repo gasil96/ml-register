@@ -1,5 +1,6 @@
 package com.ml.register.configurations;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
 import org.springframework.amqp.core.Exchange;
@@ -63,14 +64,16 @@ public class RabbitMQConfiguration {
 	}
 
 	@Bean
-	public MessageConverter jsonMessageConverter() {
-		return new Jackson2JsonMessageConverter();
+	public MessageConverter messageConverter() {
+		ObjectMapper mapper = new ObjectMapper().findAndRegisterModules();
+
+		return new Jackson2JsonMessageConverter(mapper);
 	}
 
 	@Bean
 	public RabbitTemplate rabbitTemplate(ConnectionFactory connectionFactory) {
 		final RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory);
-		rabbitTemplate.setMessageConverter(jsonMessageConverter());
+		rabbitTemplate.setMessageConverter(messageConverter());
 		return rabbitTemplate;
 	}
 
